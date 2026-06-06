@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  pixel-pump:
+    build: ./app
+    container_name: pixel-pump
+    restart: unless-stopped
+    environment:
+      - BATCH_GB=10
+      - MIN_THRESHOLD_GB=1.5
+      - CHECK_INTERVAL=120
+    volumes:
+      - ./media_vault:/vault
+      - ./pixel_sync:/sync
